@@ -1,12 +1,12 @@
 package com.mohsin.restservices.models;
 
-public class User {
+public class UserInfo {
 
     private String firstName;
     private String lastName;
     private String city;
 
-    public User(String firstName, String lastName, String city) {
+    public UserInfo(String firstName, String lastName, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;

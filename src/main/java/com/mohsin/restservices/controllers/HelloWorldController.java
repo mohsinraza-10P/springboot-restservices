@@ -1,6 +1,6 @@
 package com.mohsin.restservices.controllers;
 
-import com.mohsin.restservices.models.User;
+import com.mohsin.restservices.models.UserInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ public class HelloWorldController {
     }
 
     @GetMapping("/hello-bean")
-    public User getUserInfo() {
-        return new User("Mohsin", "Raza", "Karachi");
+    public UserInfo getUserInfo() {
+        return new UserInfo("Mohsin", "Raza", "Karachi");
     }
 }
