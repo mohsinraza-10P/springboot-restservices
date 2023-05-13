@@ -23,7 +23,7 @@ public class UserService {
     }
 
     public User createUser(User user) throws UserExistsException {
-        User existingUser = getUserByUsername(user.getUsername());
+        User existingUser = userRepository.findByUsername(user.getUsername());
         if (existingUser != null) {
             throw new UserExistsException("User already exists.");
         }
@@ -53,7 +53,11 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User getUserByUsername(String username) throws UserNotFoundException {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException("Username '" + username + "' not found.");
+        }
+        return user;
     }
 }

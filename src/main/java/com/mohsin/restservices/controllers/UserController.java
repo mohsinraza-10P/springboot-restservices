@@ -53,12 +53,8 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public Optional<User> getUserById(@PathVariable("id") Long id) {
-        try {
-            return userService.getUserById(id);
-        } catch (UserNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-        }
+    public Optional<User> getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
+        return userService.getUserById(id);
     }
 
     @PutMapping("/users/{id}")
@@ -76,7 +72,7 @@ public class UserController {
     }
 
     @GetMapping("/users/byusername/{username}")
-    public User getUserByUsername(@PathVariable("username") String username) {
+    public User getUserByUsername(@PathVariable("username") String username) throws UserNotFoundException {
         return userService.getUserByUsername(username);
     }
 }
