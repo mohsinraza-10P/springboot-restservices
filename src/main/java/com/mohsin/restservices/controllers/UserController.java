@@ -4,6 +4,7 @@ import com.mohsin.restservices.entities.User;
 import com.mohsin.restservices.exceptions.UserExistsException;
 import com.mohsin.restservices.exceptions.UserNotFoundException;
 import com.mohsin.restservices.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class UserController {
      */
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         try {
             User response = userService.createUser(user);
             return new ResponseEntity<>(response, HttpStatus.CREATED);

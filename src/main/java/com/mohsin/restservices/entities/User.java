@@ -1,6 +1,7 @@
 package com.mohsin.restservices.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -10,9 +11,11 @@ public class User {
     @GeneratedValue
     private Long id;
 
+    @NotEmpty(message = "Username is required.")
     @Column(length = 50, nullable = false, unique = true)
     private String username;
 
+    @Size(min = 2, message = "First name should have at least 2 characters.")
     @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 
