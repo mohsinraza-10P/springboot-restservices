@@ -5,10 +5,12 @@ import com.mohsin.restservices.exceptions.UserExistsException;
 import com.mohsin.restservices.exceptions.UserNotFoundException;
 import com.mohsin.restservices.services.UserService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Validated
 public class UserController {
 
     @Autowired
@@ -53,7 +56,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public Optional<User> getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
+    public Optional<User> getUserById(@PathVariable("id") @Min(1) Long id) throws UserNotFoundException {
         return userService.getUserById(id);
     }
 
