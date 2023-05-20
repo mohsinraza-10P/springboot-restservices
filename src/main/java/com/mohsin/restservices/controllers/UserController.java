@@ -4,10 +4,13 @@ import com.mohsin.restservices.entities.User;
 import com.mohsin.restservices.exceptions.UserExistsException;
 import com.mohsin.restservices.exceptions.UserNotFoundException;
 import com.mohsin.restservices.services.UserService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@Validated
 public class UserController {
 
     @Autowired
@@ -42,7 +46,7 @@ public class UserController {
      */
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         try {
             User response = userService.createUser(user);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -52,12 +56,8 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public Optional<User> getUserById(@PathVariable("id") Long id) {
-        try {
-            return userService.getUserById(id);
-        } catch (UserNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-        }
+    public Optional<User> getUserById(@PathVariable("id") @Min(1) Long id) throws UserNotFoundException {
+        return userService.getUserById(id);
     }
 
     @PutMapping("/users/{id}")
@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @GetMapping("/users/byusername/{username}")
-    public User getUserByUsername(@PathVariable("username") String username) {
+    public User getUserByUsername(@PathVariable("username") String username) throws UserNotFoundException {
         return userService.getUserByUsername(username);
     }
 }
