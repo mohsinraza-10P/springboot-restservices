@@ -1,3 +1,10 @@
 INSERT INTO users VALUES (101, 'mohsin@test.com', 'Mohsin', 'Raza', 'admin', 'ssn101', 'mohsin.test')
 INSERT INTO users VALUES (102, 'ali@test.com', 'Ali', 'Khan', 'admin', 'ssn102', 'ali.test')
 INSERT INTO users VALUES (103, 'ahmed@test.com', 'Ahmed', 'Shaikh', 'admin', 'ssn103', 'ahmed.test')
+
+INSERT INTO orders VALUES (201, 'Order # 1', 101)
+INSERT INTO orders VALUES (202, 'Order # 2', 101)
+INSERT INTO orders VALUES (203, 'Order # 3', 101)
+INSERT INTO orders VALUES (204, 'Order # 4', 102)
+INSERT INTO orders VALUES (205, 'Order # 5', 102)
+INSERT INTO orders VALUES (206, 'Order # 6', 103)
