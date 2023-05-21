@@ -3,6 +3,8 @@ package com.mohsin.restservices.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -30,6 +32,9 @@ public class User {
 
     @Column(length = 50, nullable = false, unique = true)
     private String ssn;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     public User() {
     }
@@ -100,6 +105,14 @@ public class User {
         this.ssn = ssn;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -110,6 +123,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
                 ", ssn='" + ssn + '\'' +
+                ", orders=" + orders +
                 '}';
     }
 }
