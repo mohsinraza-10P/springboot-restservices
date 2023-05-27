@@ -2,10 +2,11 @@ package com.mohsin.restservices.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends RepresentationModel<Order> {
 
     @Id
     @GeneratedValue
@@ -19,6 +20,7 @@ public class Order {
     private User user;
 
     public Order() {
+        super();
     }
 
     public Long getId() {

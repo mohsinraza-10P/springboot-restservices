@@ -2,12 +2,13 @@ package com.mohsin.restservices.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends RepresentationModel<User> {
 
     @Id
     @GeneratedValue
@@ -39,7 +40,13 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String username, String firstName, String lastName, String email, String role, String ssn) {
+    public User(
+        Long id,
+        @NotEmpty(message = "Username is required.") String username,
+        @Size(min = 2, message = "First name should have at least 2 characters.") String firstName,
+        String lastName, String email, String role, String ssn
+    ) {
+        super();
         this.id = id;
         this.username = username;
         this.firstName = firstName;
