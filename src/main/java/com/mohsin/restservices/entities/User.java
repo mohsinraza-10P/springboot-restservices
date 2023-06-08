@@ -1,5 +1,6 @@
 package com.mohsin.restservices.entities;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"firstName", "lastName"})
+//@JsonIgnoreProperties({"firstName", "lastName"}) - For Static Filtering @JsonIgnore
+@JsonFilter(value = "userFilter") // - For Dynamic Filtering using MappingJacksonValue
 public class User extends RepresentationModel<User> {
 
     @Id
@@ -35,7 +37,7 @@ public class User extends RepresentationModel<User> {
     private String role;
 
     @Column(length = 50, nullable = false, unique = true)
-    @JsonIgnore
+    //@JsonIgnore - For Static Filtering @JsonIgnore
     private String ssn;
 
     @OneToMany(mappedBy = "user")
