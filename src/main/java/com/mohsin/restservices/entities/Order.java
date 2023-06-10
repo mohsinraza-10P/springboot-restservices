@@ -1,6 +1,7 @@
 package com.mohsin.restservices.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -10,8 +11,10 @@ public class Order extends RepresentationModel<Order> {
 
     @Id
     @GeneratedValue
+    @JsonView(Views.Internal.class)
     private Long id;
 
+    @JsonView(Views.Internal.class)
     private String description;
 
     // bidirectional relationship
