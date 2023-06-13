@@ -52,6 +52,8 @@ public class User extends RepresentationModel<User> {
     @JsonView(Views.Internal.class)
     private List<Order> orders;
 
+    private String gender;
+
     public User() {
     }
 
@@ -59,7 +61,7 @@ public class User extends RepresentationModel<User> {
         Long id,
         @NotEmpty(message = "Username is required.") String username,
         @Size(min = 2, message = "First name should have at least 2 characters.") String firstName,
-        String lastName, String email, String role, String ssn
+        String lastName, String email, String role, String ssn, List<Order> orders, String gender
     ) {
         super();
         this.id = id;
@@ -69,6 +71,8 @@ public class User extends RepresentationModel<User> {
         this.email = email;
         this.role = role;
         this.ssn = ssn;
+        this.orders = orders;
+        this.gender = gender;
     }
 
     public Long getId() {
@@ -135,6 +139,14 @@ public class User extends RepresentationModel<User> {
         this.orders = orders;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -146,6 +158,7 @@ public class User extends RepresentationModel<User> {
                 ", role='" + role + '\'' +
                 ", ssn='" + ssn + '\'' +
                 ", orders=" + orders +
+                ", gender=" + gender +
                 '}';
     }
 }

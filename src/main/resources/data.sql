@@ -1,6 +1,6 @@
-INSERT INTO users VALUES (101, 'mohsin@test.com', 'Mohsin', 'Raza', 'admin', 'ssn101', 'mohsin.test')
-INSERT INTO users VALUES (102, 'ali@test.com', 'Ali', 'Khan', 'admin', 'ssn102', 'ali.test')
-INSERT INTO users VALUES (103, 'ahmed@test.com', 'Ahmed', 'Shaikh', 'admin', 'ssn103', 'ahmed.test')
+INSERT INTO users VALUES (101, 'mohsin@test.com', 'Mohsin', 'Male', 'Raza', 'admin', 'ssn101', 'mohsin.test')
+INSERT INTO users VALUES (102, 'ali@test.com', 'Ali', 'Male', 'Khan', 'admin', 'ssn102', 'ali.test')
+INSERT INTO users VALUES (103, 'ahmed@test.com', 'Ahmed', 'Male', 'Shaikh', 'admin', 'ssn103', 'ahmed.test')
 
 INSERT INTO orders VALUES (201, 'Order # 1', 101)
 INSERT INTO orders VALUES (202, 'Order # 2', 101)
