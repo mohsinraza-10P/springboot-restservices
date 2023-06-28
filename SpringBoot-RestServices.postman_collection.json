@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "967f1a67-6cdc-4c71-8ba3-fa05af1e475c",
+		"name": "SpringBoot-RestServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19726633",
+		"_collection_link": "https://solar-desert-204772.postman.co/workspace/10P-Training~c4ef63e5-21ae-4835-b7dc-a6916535f171/collection/19726633-967f1a67-6cdc-4c71-8ba3-fa05af1e475c?action=share&creator=19726633&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers - Content Negotiation XML",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser - Content Negotiation XML",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    <item>\n        <username>ahmed.test1</username>\n        <firstName>Ahmed</firstName>\n        <lastName>Shaikh</lastName>\n        <email>ahmed@test1.com</email>\n        <role>admin</role>\n        <ssn>ssn104</ssn>\n        <orders>\n            <orders>\n                <id>206</id>\n                <description>Order # 6</description>\n            </orders>\n        </orders>\n        <gender>Male</gender>\n    </item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers - Hateoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/hateoas/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hateoas",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers - Map Struct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/map-struct/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"map-struct",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Hateoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/hateoas/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hateoas",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Mapping Jackson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/jackson-filter/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"jackson-filter",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Mapping Jackson By Params",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/jackson-filter/users/params/101?fields=id,username,email,orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"jackson-filter",
+								"users",
+								"params",
+								"101"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id,username,email,orders"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Json View External",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/json-view/users/external/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"json-view",
+								"users",
+								"external",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Json View Internal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/json-view/users/internal/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"json-view",
+								"users",
+								"internal",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Model Mapper",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/model-mapper/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"model-mapper",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Map Struct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/map-struct/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"map-struct",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Uri Versioning",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/versioning-uri/users/v1/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"versioning-uri",
+								"users",
+								"v1",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Request Param Versioning",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/versioning-param/users/101?version=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"versioning-param",
+								"users",
+								"101"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Custom Header Versioning",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/versioning-header/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"versioning-header",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById - Media Type Versioning",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.springboot.app-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/versioning-media-type/users/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"versioning-media-type",
+								"users",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/byusername/mohsin.test",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"byusername",
+								"mohsin.test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"java.test\",\n    \"firstName\": \"Java\",\n    \"lastName\": \"Spring\",\n    \"email\": \"java@test.com\",\n    \"role\": \"admin\",\n    \"ssn\": \"ssnJava\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"java1.test\",\n    \"firstName\": \"Kalyan\",\n    \"lastName\": \"Updated\",\n    \"email\": \"java@test.com\",\n    \"role\": \"admin\",\n    \"ssn\": \"ssnJava\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "getAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/byuser/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"byuser",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOrders- Hateoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/hateoas/orders/byuser/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hateoas",
+								"orders",
+								"byuser",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Order # 7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/orders/byuser/101",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"byuser",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrderByOrderId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hello World",
+			"item": [
+				{
+					"name": "Hello World - i18n",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/hello-i18n",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello-i18n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hello World - i18n 2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/hello-i18n-2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hello-i18n-2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
